@@ -72,7 +72,7 @@ class SupabaseService {
     final compressedFile = await _compressImage(file);
     final fileBytes = await compressedFile.readAsBytes();
     final ext = p.extension(compressedFile.path).replaceAll('.', '');
-    final fileName = '$adId/${DateTime.now().millisecondsSinceNow}.$ext';
+    final fileName = '$adId/${DateTime.now().millisecondsSinceEpoch}.$ext';
 
     await _client.storage.from(AppConfig.adsImagesBucket).uploadBinary(
           fileName,
